@@ -7,9 +7,24 @@ from django.views import defaults as default_views
 from api.views import api_return_info
 
 urlpatterns = [
-    path("api/<sku>", view=api_return_info),
+    path(
+        "",
+        default_views.page_not_found,
+        kwargs={"exception": Exception("Page not Found")},
+        name="home",
+    ),
+    path(
+        "about/",
+        default_views.page_not_found,
+        kwargs={"exception": Exception("Page not Found")},
+        name="about",
+    ),
+    path("api/<sku>/", view=api_return_info),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
+    # User management
+    path("users/", include("bddw_skuapi.users.urls", namespace="users")),
+    path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

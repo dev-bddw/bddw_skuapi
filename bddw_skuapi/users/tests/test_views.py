@@ -11,11 +11,7 @@ from django.urls import reverse
 from bddw_skuapi.users.forms import UserAdminChangeForm
 from bddw_skuapi.users.models import User
 from bddw_skuapi.users.tests.factories import UserFactory
-from bddw_skuapi.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from bddw_skuapi.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 
