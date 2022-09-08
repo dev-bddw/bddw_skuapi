@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
-from django.views.generic import TemplateView
+
 from api.views import api_return_info
 
 urlpatterns = [
@@ -15,7 +15,7 @@ urlpatterns = [
 
 
 # SILKY
-urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
+urlpatterns += [path("silk/", include("silk.urls", namespace="silk"))]
 
 
 if settings.DEBUG:
