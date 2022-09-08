@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=bddw_skuapi
+POSTGRES_USER=IDliYAWLwSbESjHOWiUBBYkWVnBQCQfq
+POSTGRES_PASSWORD=ulmCEpj5HhAv33V1fBw6j6KxaBs6e0FLgjvTfcXGGrqe2h8roFUVIRvO6qprbzht
