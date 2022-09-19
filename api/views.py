@@ -1,14 +1,19 @@
-from django.shortcuts import render
 from django.http import JsonResponse
+
 # Create your views here.
 from .skus import skus
+
 
 def api_return_info(request, sku):
 
     for skew in skus:
-        if skew.get('sku') == sku:
+        if skew.get("sku") == sku:
             return JsonResponse(skew)
 
     else:
-        return JsonResponse({'error':'sku not found',
-                            'updated_last': 'Was this product added to bin after 9/8/22?'})
+        return JsonResponse(
+            {
+                "error": "sku not found",
+                "updated_last": "Was this product added to bin after 9/19/22?",
+            }
+        )
