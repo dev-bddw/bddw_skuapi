@@ -14,6 +14,6 @@ def api_return_info(request, sku):
         return JsonResponse(
             {
                 "error": "sku not found",
-                "updated_last": "Was this product added to bin after 9/19/22?",
+                "updated_last": "Was this product added to bin after 9/22/22?",
             }
         )
