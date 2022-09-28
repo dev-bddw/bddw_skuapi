@@ -5,12 +5,12 @@ from django.urls import include, path
 from django.views import defaults as default_views
 
 from api.views import api_return_info
+from frontend.views import look_up
 
 urlpatterns = [
     path(
         "",
-        default_views.page_not_found,
-        kwargs={"exception": Exception("Page not Found")},
+        look_up,
         name="home",
     ),
     path(
