@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 
-from api.views import api_return_info
+from api.views import api_return_all, api_return_info
 from frontend.views import look_up
 
 urlpatterns = [
@@ -19,6 +19,7 @@ urlpatterns = [
         kwargs={"exception": Exception("Page not Found")},
         name="about",
     ),
+    path("api/all/", view=api_return_all),
     path("api/<sku>/", view=api_return_info),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),

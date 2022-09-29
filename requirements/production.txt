@@ -13,4 +13,3 @@ django-anymail[sendgrid]==8.5  # https://github.com/anymail/django-anymail
 
 
 # CORS
-django-cors-headers

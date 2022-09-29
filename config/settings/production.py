@@ -1,5 +1,3 @@
-from django.conf import settings
-
 from .base import *  # noqa
 from .base import env
 
@@ -112,7 +110,7 @@ ADMIN_URL = env("DJANGO_ADMIN_URL")
 # Anymail
 # ------------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
-INSTALLED_APPS += ["anymail", "corsheaders"]  # noqa F405
+INSTALLED_APPS += ["anymail"]  # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 # https://anymail.readthedocs.io/en/stable/esps/sendgrid/
@@ -176,13 +174,3 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-
-settings.MIDDLEWARE += ["corsheaders.middleware.CorsMiddleware"]
-
-CORS_ALLOWED_ORIGINS = [
-    "https://www.bddwscans.com",
-    "https://bddwscans.com",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:8000",
-]

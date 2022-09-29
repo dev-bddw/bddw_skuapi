@@ -73,6 +73,7 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "silk",
+    "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -279,3 +280,12 @@ SOCIALACCOUNT_FORMS = {"signup": "bddw_skuapi.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+MIDDLEWARE += ["corsheaders.middleware.CorsMiddleware"]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://www.bddwscans.com",
+    "https://bddwscans.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8000",
+]

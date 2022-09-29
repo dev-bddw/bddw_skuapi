@@ -4,6 +4,11 @@ from django.http import JsonResponse
 from .skus import skus
 
 
+def api_return_all(request):
+
+    return JsonResponse(skus, safe=False)
+
+
 def api_return_info(request, sku):
 
     for skew in skus:

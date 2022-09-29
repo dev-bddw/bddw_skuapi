@@ -16,3 +16,4 @@ crispy-bootstrap5==0.6  # https://github.com/django-crispy-forms/crispy-bootstra
 django-redis==5.2.0  # https://github.com/jazzband/django-redis
 django-jazzmin==2.5.0 #https://django-jazzmin.readthedocs.io/
 django-silk==4.3.0 #https://github.com/jazzband/django-silk
+django-cors-headers==3.13.0 #https://pypi.org/project/django-cors-headers/
