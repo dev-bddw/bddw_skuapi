@@ -26,6 +26,7 @@ certificatesResolvers:
         entryPoint: web
 
 http:
+
   routers:
     web-secure-router:
       rule: "Host(`bddwskuapi.bddwapps.com`)"
@@ -33,6 +34,7 @@ http:
         - web-secure
       middlewares:
         - csrf
+
       service: django
       tls:
         # https://docs.traefik.io/master/routing/routers/#certresolver

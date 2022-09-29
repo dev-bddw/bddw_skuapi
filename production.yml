@@ -43,6 +43,8 @@ services:
     ports:
       - "0.0.0.0:80:80"
       - "0.0.0.0:443:443"
+    labels:
+      - "traefik.http.middlewares.autodetect.contenttype.autodetect=false"
 
   redis:
     image: redis:6
