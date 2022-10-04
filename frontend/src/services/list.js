@@ -1,5 +1,5 @@
 export function getList() {
-    return fetch('http://localhost:8000/v2/products')
+    return fetch('https://bddwskuapi.bddwapps.com/v2/products')
     .then(response => response.data.json())
 }
 
