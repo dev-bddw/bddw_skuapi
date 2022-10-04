@@ -14,7 +14,7 @@ const Table = () => {
         getList()
         .then(items => {
             if(mounted) {
-                setList(items);
+                setList(items.data);
                 setLoading(false);
             }
         })
