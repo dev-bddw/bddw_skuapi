@@ -21,6 +21,7 @@ urlpatterns = [
     ),
     path("api/all/", view=api_return_all),
     path("api/<sku>/", view=api_return_info),
+    path("v2/", include("v2.urls")),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
