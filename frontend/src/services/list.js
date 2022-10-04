@@ -1,4 +1,10 @@
 export function getList() {
-    return fetch('https://bddwskuapi.bddwapps.com/api/all/')
-    .then(data => data.json())
+    return fetch('http://localhost:8000/v2/products')
+    .then(response => response.data.json())
+}
+
+export function getSku(sku) {
+
+    return fetch(`https://bddwskuapi.bddwapps.com/api/${sku}/`)
+    .then(response => response.data.json())
 }

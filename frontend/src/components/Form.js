@@ -3,6 +3,7 @@ const Form = (props) => {
     <div className="container mx-auto">
         <form className="mb-10"onSubmit={props.onSubmit}>
             <label className="block">
+                    <span className="font-thin">SKU</span>
                     <input
                         className="leading-tight shadow appearance-none border rounded focus:outline-none focus:shadow-outline "
                         id='sku'
