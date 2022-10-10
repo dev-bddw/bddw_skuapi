@@ -64,7 +64,6 @@ def all(request):
                 "item": d.get("item", None),
                 "created_by": d.get("created_by", None),
                 "created_on": d.get("created_on", None),
-                "scans": [],
             },
             "links": {
                 "img": "https://bddwinventory.com/assets/large/{0}-1.jpg".format(
@@ -100,7 +99,6 @@ def by_sku(request, sku):
                         "item": s.get("item", None),
                         "created_by": s.get("created_by", None),
                         "created_on": s.get("created_on", None),
-                        "scans": [],
                     },
                     "links": {
                         "img": "https://bddwinventory.com/assets/large/{0}-1.jpg".format(
