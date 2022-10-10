@@ -4,47 +4,49 @@ from django.http import JsonResponse
 
 from .skus import skus
 
-product_response = {
-    "data": {
-        "type": "products",
-        "id": "35902052",
-        "attributes": {
-            "category": "storage",
-            "series": "lake",
-            "credenza": "credenza",
-            "created_by": "molly@bddw.com",
-            "created_on": "datetime",
-            "scans": [],
-        },
-        "links": {
-            "img": "https://bddwinventory.com/assets/large/22010308-1.jpg",
-            "self": "https://api-link-to-lself",
-            "bin": "https://link-to-bin",
-        },
-    }
-}
+# https://jsonapi.org/format/#fetching
 
-list_response = {
-    "data": [
-        {
-            "type": "products",
-            "id": "35902052",
-            "attributes": {
-                "category": "storage",
-                "series": "lake",
-                "item": "credenza",
-                "created_by": "molly@bddw.com",
-                "created_on": "datetime",
-                "scans": [],
-            },
-            "links": {
-                "img": "https://bddwinventory.com/assets/large/22010308-1.jpg",
-                "self": "https://api-link-to-lself",
-                "bin": "https://link-to-bin",
-            },
-        }
-    ]
-}
+# product_response = {
+#     "data": {
+#         "type": "products",
+#         "id": "35902052",
+#         "attributes": {
+#             "category": "storage",
+#             "series": "lake",
+#             "credenza": "credenza",
+#             "created_by": "molly@bddw.com",
+#             "created_on": "datetime",
+#             "scans": [],
+#         },
+#         "links": {
+#             "img": "https://bddwinventory.com/assets/large/22010308-1.jpg",
+#             "self": "https://api-link-to-lself",
+#             "bin": "https://link-to-bin",
+#         },
+#     }
+# }
+
+# list_response = {
+#     "data": [
+#         {
+#             "type": "products",
+#             "id": "35902052",
+#             "attributes": {
+#                 "category": "storage",
+#                 "series": "lake",
+#                 "item": "credenza",
+#                 "created_by": "molly@bddw.com",
+#                 "created_on": "datetime",
+#                 "scans": [],
+#             },
+#             "links": {
+#                 "img": "https://bddwinventory.com/assets/large/22010308-1.jpg",
+#                 "self": "https://api-link-to-lself",
+#                 "bin": "https://link-to-bin",
+#             },
+#         }
+#     ]
+# }
 
 
 def all(request):
@@ -61,7 +63,7 @@ def all(request):
                 "series": d.get("series", None),
                 "item": d.get("item", None),
                 "created_by": d.get("created_by", None),
-                "created_on": d.get("datetime", None),
+                "created_on": d.get("created_on", None),
                 "scans": [],
             },
             "links": {
@@ -84,14 +86,55 @@ def all(request):
 
 def by_sku(request, sku):
 
-    for skew in skus:
-        if skew.get("sku") == sku:
-            return JsonResponse(skew)
+    for s in json.loads(skus):
 
-    else:
-        return JsonResponse(
-            {
-                "error": "sku not found",
-                "updated_last": "Was this product added to bin after 9/22/22?",
+        if s.get("sku") == sku:
+
+            formatting = {
+                "data": {
+                    "type": "products",
+                    "id": s.get("sku", None),
+                    "attributes": {
+                        "category": s.get("category", None),
+                        "series": s.get("series", None),
+                        "item": s.get("item", None),
+                        "created_by": s.get("created_by", None),
+                        "created_on": s.get("created_on", None),
+                        "scans": [],
+                    },
+                    "links": {
+                        "img": "https://bddwinventory.com/assets/large/{0}-1.jpg".format(
+                            s.get("sku")
+                        ),
+                        "self": "https://bddwskuapi.bddwapps/v2/products/{0}".format(
+                            s.get("sku")
+                        ),
+                        "bin": "https://bddwinventory.com/detail.html?sku={0}".format(
+                            s.get("sku")
+                        ),
+                    },
+                }
             }
-        )
+
+            return JsonResponse(formatting)
+
+        else:
+            return JsonResponse(
+                {
+                    "type": "products",
+                    "id": None,
+                    "attributes": {
+                        "category": None,
+                        "series": None,
+                        "item": None,
+                        "created_by": None,
+                        "created_on": None,
+                        "scans": [],
+                    },
+                    "links": {
+                        "img": None,
+                        "self": None,
+                        "bin": None,
+                    },
+                }
+            )

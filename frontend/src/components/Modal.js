@@ -1,4 +1,22 @@
+
+import React, { useState, useEffect } from 'react';
+import {getScans} from '../services/production/Get'
+
 export default function Modal (props) {
+
+    const [scans, setScans] = useState('')
+
+    useEffect((props) => {
+        let mounted = true;
+        getScans(props.sku)
+        .then(items => {
+            if(mounted) {
+                setScans(items.data)
+            }
+        })
+        return () => mounted = false;
+        }, [])
+
 
     return (
         <>
@@ -11,7 +29,7 @@ export default function Modal (props) {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                 <h3 className="text-3xl font-semibold">
-                    SCANS FOR {props.sku}
+                    {props.sku}
                 </h3>
                 <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -25,7 +43,7 @@ export default function Modal (props) {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    {props.scans}
+                    {scans}
                 </p>
                 </div>
                 {/*footer*/}

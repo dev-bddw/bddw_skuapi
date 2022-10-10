@@ -132,6 +132,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -281,7 +282,6 @@ SOCIALACCOUNT_FORMS = {"signup": "bddw_skuapi.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-MIDDLEWARE += ["corsheaders.middleware.CorsMiddleware"]
 
 CORS_ALLOWED_ORIGINS = [
     "https://www.bddwscans.com",
@@ -290,3 +290,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://localhost:8000",
 ]
+CORS_ORIGIN_ALLOW_ALL = True
+
+ALLOWED_HOSTS = ["localhost"]
