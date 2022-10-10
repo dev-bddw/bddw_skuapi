@@ -1,14 +1,37 @@
-
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {getScans} from '../services/production/Get'
 
 const Modal = (props) => {
-    console.log(props)
-    const [scans, setScans] = useState('')
+    const [scans, setScans] = useState([])
 
-    getScans(props.sku).then(items => setScans(items.data) )
+    useEffect(() => {
+        let mounted = true;
+        getScans(props.sku)
+        .then(items => {
+            if(mounted) {
+                setScans(items.data)
+                ;
+            }
+        })
+        return () => mounted = false;
+        }, [props])
 
+    function render_location(code) {
 
+        const locations = {
+            '301': 'FRANKFORD',
+            '201': 'RED LION',
+            '101': 'TEST',
+            '401': 'ERIE',
+            '501': 'NEW YORK',
+            '601': 'LONDON'
+        }
+
+        return locations[code]
+
+    }
+
+    // getScans(props.sku).then(items => setScans(items.data) )
 
     return (
         <>
@@ -21,7 +44,7 @@ const Modal = (props) => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                 <h3 className="text-3xl font-semibold">
-                    {props.sku}
+                    WAREHOUSE SCANS FOR {props.sku}
                 </h3>
                 <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -35,7 +58,14 @@ const Modal = (props) => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    {scans}
+                    {
+                        scans.map(object=> {
+                            return(
+                                <p>{render_location(object.attributes.location)} -- {object.attributes.time_scan}</p>
+                            )
+                        }
+                        )
+                    }
                 </p>
                 </div>
                 {/*footer*/}

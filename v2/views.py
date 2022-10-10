@@ -118,23 +118,22 @@ def by_sku(request, sku):
 
             return JsonResponse(formatting)
 
-        else:
-            return JsonResponse(
-                {
-                    "type": "products",
-                    "id": None,
-                    "attributes": {
-                        "category": None,
-                        "series": None,
-                        "item": None,
-                        "created_by": None,
-                        "created_on": None,
-                        "scans": [],
-                    },
-                    "links": {
-                        "img": None,
-                        "self": None,
-                        "bin": None,
-                    },
-                }
-            )
+    return JsonResponse(
+        {
+            "type": "products",
+            "id": None,
+            "attributes": {
+                "category": None,
+                "series": None,
+                "item": None,
+                "created_by": None,
+                "created_on": None,
+                "scans": [],
+            },
+            "links": {
+                "img": None,
+                "self": None,
+                "bin": None,
+            },
+        }
+    )

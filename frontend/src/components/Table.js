@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Row from './Row';
 import Form from './Form';
 
-// import {getSku, getList} from '../services/local/Get'
 import {getSku, getList} from '../services/production/Get'
 
 
@@ -40,7 +39,6 @@ const Table = () => {
                         item={object.attributes.item}
                         created_by={object.attributes.created_by}
                         created_on={object.attributes.created_on}
-                        scans={'This is where we are going to render all the location scans for the sku'}
                     />
                     )
 
@@ -49,13 +47,12 @@ const Table = () => {
             return (
                 <Row
                 key={item.id}
-                sku={item.id}
+                sku={item.attributes.id}
                 category={item.attributes.category}
                 series={item.attributes.series}
                 item={item.attributes.item}
                 created_by={item.attributes.created_by}
                 created_on={item.attributes.created_on}
-                scans={'This is where we are going to render all the location scans for the sku'}
                 />
             )
         }
@@ -63,11 +60,14 @@ const Table = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+
         setLoading(true)
-        getSku(sku).then( item =>
+
+        getSku(sku).then( response =>
             {
+                console.log(response)
                 setList(null)
-                setItem(item.data)
+                setItem(response)
                 setLoading(false)
 
             }

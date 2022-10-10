@@ -1,7 +1,7 @@
 const Form = (props) => {
     return (
     <div className="container mx-auto">
-        <form className="mb-10"onSubmit={props.onSubmit}>
+        <form className="mb-10" onSubmit={props.onSubmit}>
             <label className="block">
                     <span className="font-thin">SKU</span>
                     <input

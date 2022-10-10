@@ -18,7 +18,7 @@ const Row = (props) => {
             <td className="py-2 px-6">{props.created_by}</td>
             <td className="py-2 px-6">{props.created_on}</td>
             {showModal ? (
-                <Modal sku={props.sku} setShowModal={setShowModal} scans={props.scans}></Modal>
+                <Modal sku={props.sku} setShowModal={setShowModal}></Modal>
             ) : null}
         </tr>
 
