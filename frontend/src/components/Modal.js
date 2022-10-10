@@ -9,8 +9,7 @@ const Modal = (props) => {
         getScans(props.sku)
         .then(items => {
             if(mounted) {
-                setScans(items.data)
-                ;
+                setScans(items.data);
             }
         })
         return () => mounted = false;
@@ -28,6 +27,22 @@ const Modal = (props) => {
         }
 
         return locations[code]
+
+    }
+
+    function render_scans() {
+        if ( scans ) {
+            return (
+                scans.map( object => {
+                    return(
+                        <p>{render_location(object.attributes.location)} - {object.attributes.time_scan} </p>
+                    )
+                })
+            )
+        } else {
+            return (<p> this product has no scans</p>)
+        }
+
 
     }
 
@@ -58,14 +73,12 @@ const Modal = (props) => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                 <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                    {
-                        scans.map(object=> {
-                            return(
-                                <p>{render_location(object.attributes.location)} -- {object.attributes.time_scan}</p>
-                            )
-                        }
-                        )
-                    }
+
+                {
+                    render_scans()
+                }
+
+
                 </p>
                 </div>
                 {/*footer*/}

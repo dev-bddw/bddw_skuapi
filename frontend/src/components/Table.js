@@ -34,6 +34,7 @@ const Table = () => {
                         <Row
                         key={object.id}
                         sku={object.id}
+                        bin_link={object.links.bin}
                         category={object.attributes.category}
                         series={object.attributes.series}
                         item={object.attributes.item}
@@ -47,7 +48,8 @@ const Table = () => {
             return (
                 <Row
                 key={item.id}
-                sku={item.attributes.id}
+                sku={item.id}
+                bin_link={item.links.bin}
                 category={item.attributes.category}
                 series={item.attributes.series}
                 item={item.attributes.item}
@@ -67,7 +69,7 @@ const Table = () => {
             {
                 console.log(response)
                 setList(null)
-                setItem(response)
+                setItem(response.data)
                 setLoading(false)
 
             }
