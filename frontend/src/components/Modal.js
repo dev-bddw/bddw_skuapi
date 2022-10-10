@@ -1,21 +1,13 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {getScans} from '../services/production/Get'
 
-export default function Modal (props) {
-
+const Modal = (props) => {
+    console.log(props)
     const [scans, setScans] = useState('')
 
-    useEffect((props) => {
-        let mounted = true;
-        getScans(props.sku)
-        .then(items => {
-            if(mounted) {
-                setScans(items.data)
-            }
-        })
-        return () => mounted = false;
-        }, [])
+    getScans(props.sku).then(items => setScans(items.data) )
+
 
 
     return (
@@ -63,3 +55,5 @@ export default function Modal (props) {
         </>
 
 )}
+
+export default Modal;
