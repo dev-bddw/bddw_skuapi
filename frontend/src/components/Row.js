@@ -9,7 +9,7 @@ const Row = (props) => {
     return (
 
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td><a href={props.bin_link}>BIN</a></td>
+            <td className="py-2 px-6"><a href={props.bin_link}>BIN</a></td>
             <td className="py-2 px-6">
                 <span onClick={() => setShowModal(true)}>{props.sku}</span></td>
             <td className="py-2 px-6">{props.category}</td>

@@ -12,7 +12,7 @@ export function getSku(sku) {
 
 export function getScans(sku) {
 
-    const url = `https://bddwscans.com/v2/scans/?sku=${sku}`
+    const url = `https://bddwscans.com/v2/scans/${sku}`
 
     return fetch(url)
     .then(response => response.json())
