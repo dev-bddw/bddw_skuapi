@@ -1,18 +1,18 @@
 const Form = (props) => {
+
     return (
     <div className="container mx-auto">
-        <form className="mb-10" onSubmit={props.onSubmit}>
+        <form onSubmit={event => event.preventDefault()} className="mb-10">
             <label className="block">
-                    <span className="font-thin">SKU</span>
+                <span className="font-thin">SKU</span>
                     <input
                         className="leading-tight shadow appearance-none border rounded focus:outline-none focus:shadow-outline "
                         id='sku'
                         name="sku"
                         value={props.sku}
                         onChange={event => props.setSku(event.target.value)}
-                        type="text">
-                    </input>
-                    <button className="mx-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" type="submit">Submit</button>
+                        type="text"
+                    />
             </label>
         </form>
     </div>
